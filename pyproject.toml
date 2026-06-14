@@ -1,0 +1,30 @@
+[build-system]
+requires=[
+    "setuptools>=80",
+    "setuptools-scm>=8",
+    "wheel",
+    "build",
+    "uv-build"
+]
+
+[project]
+name = "ai-companion-agent-connector"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = ["mcp", "fastmcp", "a2a-sdk", "ai-companion-core"]
+
+[project.optional-dependencies]
+openai = ["openai-agents"]
+langchain = ["ai-companion-langchain-integrator", "deepagents"]
+smolagents = ["smolagents[mcp, toolkit]"]
+crewai = ["crewai"]
+llama-index = ["llama-index-core", "llama-index-llms-openai", "llama-index-embeddings-huggingface"]
+autogen = ["autogen-agentchat", "autogen-ext[openai]"]
+adk = ["google-adk[a2a]"]
+claude = ["claude-agent-sdk"]
+composio = ["composio"]
+
+[tool.uv.sources]
+smolagents = { git = "https://github.com/huggingface/smolagents.git" }
