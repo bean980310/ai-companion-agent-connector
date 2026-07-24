@@ -21,11 +21,7 @@ import webbrowser
 from pathlib import Path
 from typing import Optional, override
 
-from authlib.integrations.httpx_client import AsyncOAuth2Client, AsyncAssertionClient
-from authlib.oauth2.rfc7636 import create_s256_code_challenge
-from pydantic import Field
 
-import jwt
 
 import httpx
 
@@ -526,7 +522,7 @@ class PKCEOAuthProvider:
 
                 token_data = resp.json()
                 if "access_token" not in token_data:
-                    logger.warning(f"[PKCE] Refresh response missing access_token")
+                    logger.warning("[PKCE] Refresh response missing access_token")
                     return None
 
                 token = OAuthToken.model_validate(token_data)
